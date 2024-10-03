@@ -2,10 +2,17 @@
 #ifndef HEAP_H
 #define HEAP_H
 
+#include <stdio.h>
+
 // a min heap
 
+typedef union heap_val {
+    unsigned long long as_int;
+    void *as_ptr;
+} heap_value_t;
+
 typedef unsigned long long heap_key_t;
-typedef void* heap_value_t;
+//typedef void* heap_value_t;
 #define HEAP_KEY_FORMAT "%llu"
 
 typedef struct {
@@ -18,6 +25,8 @@ typedef struct {
     int size;
     int capacity;
 } heap_t;
+
+extern FILE *output_file;
 
 heap_t *heap_create(int capacity);
 
